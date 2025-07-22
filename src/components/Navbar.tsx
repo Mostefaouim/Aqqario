@@ -12,6 +12,7 @@ const Navbar = () => {
   const navigation = [
     { name: "Home", href: "/", icon: Home },
     { name: "Properties", href: "/listings", icon: Building },
+    { name: "Post Property", href: "/post-property", icon: Home },
     { name: "Contact", href: "/contact", icon: Phone },
   ];
 

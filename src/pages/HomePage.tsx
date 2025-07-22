@@ -5,7 +5,9 @@ import PropertyCard from "@/components/PropertyCard";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Star, Quote } from "lucide-react";
+import { ArrowRight, Star, Quote, Home, Plus } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 // Mock data for featured properties
 const featuredProperties = [
@@ -74,10 +76,34 @@ const testimonials = [
 ];
 
 const HomePage = () => {
+  const { user } = useAuth();
   return (
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
+      
+      {/* Agent Quick Actions */}
+      {user && (
+        <section className="py-12 bg-primary/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold text-foreground mb-4">
+                Welcome back, Agent!
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Ready to add new properties to your portfolio?
+              </p>
+              <Link to="/post-property">
+                <Button size="lg" className="flex items-center gap-2">
+                  <Plus className="w-5 h-5" />
+                  Post New Property
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+      
       <FeaturesSection />
       
       {/* Featured Properties Section */}
