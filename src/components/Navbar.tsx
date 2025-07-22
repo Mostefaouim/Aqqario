@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Building, Phone, User } from "lucide-react";
+import { Menu, X, Home, Building, Phone, User, LogOut } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const navigation = [
-    { name: "Accueil", href: "/", icon: Home },
-    { name: "Propriétés", href: "/listings", icon: Building },
+    { name: "Home", href: "/", icon: Home },
+    { name: "Properties", href: "/listings", icon: Building },
     { name: "Contact", href: "/contact", icon: Phone },
   ];
 
@@ -47,17 +49,31 @@ const Navbar = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="ghost" size="sm">
-                <User className="w-4 h-4 mr-2" />
-                Connexion
-              </Button>
-            </Link>
-            <Link to="/subscribe">
-              <Button variant="hero" size="sm">
-                S'abonner
-              </Button>
-            </Link>
+            {user ? (
+              <>
+                <span className="text-sm text-muted-foreground">
+                  Welcome, {user.email}
+                </span>
+                <Button variant="ghost" size="sm" onClick={signOut}>
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/auth">
+                  <Button variant="ghost" size="sm">
+                    <User className="w-4 h-4 mr-2" />
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/subscribe">
+                  <Button variant="hero" size="sm">
+                    Subscribe
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -92,17 +108,39 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="border-t border-border pt-4 space-y-2">
-                <Link to="/login" onClick={() => setIsOpen(false)}>
-                  <Button variant="ghost" size="sm" className="w-full justify-start">
-                    <User className="w-4 h-4 mr-2" />
-                    Connexion
-                  </Button>
-                </Link>
-                <Link to="/subscribe" onClick={() => setIsOpen(false)}>
-                  <Button variant="hero" size="sm" className="w-full">
-                    S'abonner
-                  </Button>
-                </Link>
+                {user ? (
+                  <>
+                    <div className="px-3 py-2 text-sm text-muted-foreground">
+                      Welcome, {user.email}
+                    </div>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="w-full justify-start"
+                      onClick={() => {
+                        signOut();
+                        setIsOpen(false);
+                      }}
+                    >
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full justify-start">
+                        <User className="w-4 h-4 mr-2" />
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link to="/subscribe" onClick={() => setIsOpen(false)}>
+                      <Button variant="hero" size="sm" className="w-full">
+                        Subscribe
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

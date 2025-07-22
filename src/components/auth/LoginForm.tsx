@@ -21,8 +21,9 @@ const LoginForm = ({ isLoading, onSubmit }: LoginFormProps) => {
           <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="email"
+            name="email"
             type="email"
-            placeholder="votre@email.com"
+            placeholder="Enter your email"
             className="pl-10"
             required
           />
@@ -30,13 +31,14 @@ const LoginForm = ({ isLoading, onSubmit }: LoginFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="password">Mot de passe</Label>
+        <Label htmlFor="password">Password</Label>
         <div className="relative mt-1">
           <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="password"
+            name="password"
             type={showPassword ? "text" : "password"}
-            placeholder="••••••••"
+            placeholder="Enter your password"
             className="pl-10 pr-10"
             required
           />
@@ -57,15 +59,15 @@ const LoginForm = ({ isLoading, onSubmit }: LoginFormProps) => {
       <div className="flex items-center justify-between">
         <label className="flex items-center">
           <input type="checkbox" className="mr-2" />
-          <span className="text-sm text-muted-foreground">Se souvenir de moi</span>
+          <span className="text-sm text-muted-foreground">Remember me</span>
         </label>
         <a href="#" className="text-sm text-primary hover:underline">
-          Mot de passe oublié ?
+          Forgot password?
         </a>
       </div>
 
       <Button type="submit" className="w-full" disabled={isLoading}>
-        {isLoading ? "Connexion..." : "Se connecter"}
+        {isLoading ? "Signing in..." : "Sign in"}
       </Button>
     </form>
   );

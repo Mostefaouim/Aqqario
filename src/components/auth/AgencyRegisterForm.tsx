@@ -16,13 +16,14 @@ const AgencyRegisterForm = ({ isLoading, onSubmit }: AgencyRegisterFormProps) =>
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <div>
-        <Label htmlFor="agency-name">Nom de l'agence</Label>
+        <Label htmlFor="agency-name">Agency Name</Label>
         <div className="relative mt-1">
           <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="agency-name"
+            name="agencyName"
             type="text"
-            placeholder="Nom de votre agence"
+            placeholder="Your agency name"
             className="pl-10"
             required
           />
@@ -30,13 +31,14 @@ const AgencyRegisterForm = ({ isLoading, onSubmit }: AgencyRegisterFormProps) =>
       </div>
 
       <div>
-        <Label htmlFor="contact-name">Nom du contact</Label>
+        <Label htmlFor="contact-name">Contact Name</Label>
         <div className="relative mt-1">
           <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="contact-name"
+            name="contactName"
             type="text"
-            placeholder="Votre nom complet"
+            placeholder="Your full name"
             className="pl-10"
             required
           />
@@ -44,13 +46,14 @@ const AgencyRegisterForm = ({ isLoading, onSubmit }: AgencyRegisterFormProps) =>
       </div>
 
       <div>
-        <Label htmlFor="agency-email">Email professionnel</Label>
+        <Label htmlFor="agency-email">Professional Email</Label>
         <div className="relative mt-1">
           <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="agency-email"
+            name="email"
             type="email"
-            placeholder="contact@votre-agence.com"
+            placeholder="contact@your-agency.com"
             className="pl-10"
             required
           />
@@ -58,13 +61,14 @@ const AgencyRegisterForm = ({ isLoading, onSubmit }: AgencyRegisterFormProps) =>
       </div>
 
       <div>
-        <Label htmlFor="agency-password">Mot de passe</Label>
+        <Label htmlFor="agency-password">Password</Label>
         <div className="relative mt-1">
           <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="agency-password"
+            name="password"
             type={showPassword ? "text" : "password"}
-            placeholder="••••••••"
+            placeholder="Enter your password"
             className="pl-10 pr-10"
             required
           />
@@ -85,19 +89,19 @@ const AgencyRegisterForm = ({ isLoading, onSubmit }: AgencyRegisterFormProps) =>
       <div className="flex items-start">
         <input type="checkbox" className="mt-1 mr-2" required />
         <span className="text-sm text-muted-foreground">
-          J'accepte les{" "}
+          I agree to the{" "}
           <a href="#" className="text-primary hover:underline">
-            conditions d'utilisation
+            terms of service
           </a>{" "}
-          et la{" "}
+          and{" "}
           <a href="#" className="text-primary hover:underline">
-            politique de confidentialité
+            privacy policy
           </a>
         </span>
       </div>
 
       <Button type="submit" variant="hero" className="w-full" disabled={isLoading}>
-        {isLoading ? "Création..." : "Créer mon compte agence"}
+        {isLoading ? "Creating account..." : "Create agency account"}
       </Button>
     </form>
   );

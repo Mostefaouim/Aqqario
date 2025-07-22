@@ -17,26 +17,28 @@ const RegisterForm = ({ isLoading, onSubmit }: RegisterFormProps) => {
     <form onSubmit={onSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="firstName">Prénom</Label>
+          <Label htmlFor="firstName">First Name</Label>
           <div className="relative mt-1">
             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               id="firstName"
+              name="firstName"
               type="text"
-              placeholder="Prénom"
+              placeholder="First Name"
               className="pl-10"
               required
             />
           </div>
         </div>
         <div>
-          <Label htmlFor="lastName">Nom</Label>
+          <Label htmlFor="lastName">Last Name</Label>
           <div className="relative mt-1">
             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               id="lastName"
+              name="lastName"
               type="text"
-              placeholder="Nom"
+              placeholder="Last Name"
               className="pl-10"
               required
             />
@@ -50,8 +52,9 @@ const RegisterForm = ({ isLoading, onSubmit }: RegisterFormProps) => {
           <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="register-email"
+            name="email"
             type="email"
-            placeholder="votre@email.com"
+            placeholder="Enter your email"
             className="pl-10"
             required
           />
@@ -59,25 +62,27 @@ const RegisterForm = ({ isLoading, onSubmit }: RegisterFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="phone">Téléphone</Label>
+        <Label htmlFor="phone">Phone</Label>
         <div className="relative mt-1">
           <Input
             id="phone"
+            name="phone"
             type="tel"
-            placeholder="+213 XXX XXX XXX"
+            placeholder="Phone number"
             required
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="register-password">Mot de passe</Label>
+        <Label htmlFor="register-password">Password</Label>
         <div className="relative mt-1">
           <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             id="register-password"
+            name="password"
             type={showPassword ? "text" : "password"}
-            placeholder="••••••••"
+            placeholder="Enter your password"
             className="pl-10 pr-10"
             required
           />
@@ -98,19 +103,19 @@ const RegisterForm = ({ isLoading, onSubmit }: RegisterFormProps) => {
       <div className="flex items-start">
         <input type="checkbox" className="mt-1 mr-2" required />
         <span className="text-sm text-muted-foreground">
-          J'accepte les{" "}
+          I agree to the{" "}
           <a href="#" className="text-primary hover:underline">
-            conditions d'utilisation
+            terms of service
           </a>{" "}
-          et la{" "}
+          and{" "}
           <a href="#" className="text-primary hover:underline">
-            politique de confidentialité
+            privacy policy
           </a>
         </span>
       </div>
 
       <Button type="submit" variant="hero" className="w-full" disabled={isLoading}>
-        {isLoading ? "Création..." : "Créer mon compte"}
+        {isLoading ? "Creating account..." : "Create account"}
       </Button>
     </form>
   );
