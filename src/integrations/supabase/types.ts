@@ -14,7 +14,228 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      favorites: {
+        Row: {
+          created_at: string
+          id: string
+          property_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          property_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          property_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "properties"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          inquiry_type: string | null
+          message: string
+          name: string
+          phone: string | null
+          property_id: string
+          status: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          inquiry_type?: string | null
+          message: string
+          name: string
+          phone?: string | null
+          property_id: string
+          status?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          inquiry_type?: string | null
+          message?: string
+          name?: string
+          phone?: string | null
+          property_id?: string
+          status?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inquiries_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "properties"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          agency_name: string | null
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          email: string
+          first_name: string | null
+          id: string
+          last_name: string | null
+          license_number: string | null
+          phone: string | null
+          role: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          agency_name?: string | null
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          license_number?: string | null
+          phone?: string | null
+          role?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          agency_name?: string | null
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          license_number?: string | null
+          phone?: string | null
+          role?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      properties: {
+        Row: {
+          address: string
+          agent_id: string | null
+          bathrooms: number | null
+          bedrooms: number | null
+          city: string
+          country: string | null
+          created_at: string
+          currency: string | null
+          description: string | null
+          features: string[] | null
+          id: string
+          images: string[] | null
+          latitude: number | null
+          listing_date: string | null
+          longitude: number | null
+          lot_size: number | null
+          price: number
+          property_type: string
+          square_feet: number | null
+          state: string
+          status: string
+          title: string
+          updated_at: string
+          virtual_tour_url: string | null
+          year_built: number | null
+          zip_code: string
+        }
+        Insert: {
+          address: string
+          agent_id?: string | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          city: string
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          features?: string[] | null
+          id?: string
+          images?: string[] | null
+          latitude?: number | null
+          listing_date?: string | null
+          longitude?: number | null
+          lot_size?: number | null
+          price: number
+          property_type: string
+          square_feet?: number | null
+          state: string
+          status?: string
+          title: string
+          updated_at?: string
+          virtual_tour_url?: string | null
+          year_built?: number | null
+          zip_code: string
+        }
+        Update: {
+          address?: string
+          agent_id?: string | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          city?: string
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          features?: string[] | null
+          id?: string
+          images?: string[] | null
+          latitude?: number | null
+          listing_date?: string | null
+          longitude?: number | null
+          lot_size?: number | null
+          price?: number
+          property_type?: string
+          square_feet?: number | null
+          state?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          virtual_tour_url?: string | null
+          year_built?: number | null
+          zip_code?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "properties_agent_id_fkey"
+            columns: ["agent_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
