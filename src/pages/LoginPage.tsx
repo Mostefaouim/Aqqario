@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LoginForm from "@/components/auth/LoginForm";
@@ -19,6 +20,12 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead 
+        title="Connexion & Inscription - Agences & Particuliers | Aqqario"
+        description="Accédez à votre espace Aqqario. Connexion pour utilisateurs existants ou inscription gratuite pour agences immobilières et particuliers."
+        keywords="connexion aqqario, inscription agence, login immobilier, créer compte"
+        canonical="https://aqqario.com/login"
+      />
       <Navbar />
       
       <div className="pt-16 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

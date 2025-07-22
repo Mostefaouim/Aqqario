@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import PropertyCard from "@/components/PropertyCard";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -93,6 +94,14 @@ const ListingsPage = () => {
   const [priceRange, setPriceRange] = useState([0, 100000000]);
   const [showFilters, setShowFilters] = useState(false);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Propriétés Immobilières Aqqario",
+    "description": "Liste des propriétés disponibles à l'achat, vente et location sur Aqqario",
+    "url": "https://aqqario.com/listings"
+  };
+
   const filterOptions = {
     types: ["Tous", "Appartement", "Villa", "Maison", "Studio", "Duplex"],
     locations: ["Toutes", "Alger Centre", "Hydra", "Cheraga", "Bouzareah", "Ain Taya"],
@@ -101,6 +110,13 @@ const ListingsPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead 
+        title="Propriétés Immobilières - Achat, Vente, Location | Aqqario"
+        description="Explorez notre sélection de propriétés immobilières. Maisons, appartements, locaux commerciaux à acheter, vendre ou louer. Filtres avancés pour trouver le bien idéal."
+        keywords="propriétés immobilières, achat maison, vente appartement, location bureau, bien immobilier, filtres recherche"
+        canonical="https://aqqario.com/listings"
+        structuredData={structuredData}
+      />
       <Navbar />
       
       <div className="pt-16">

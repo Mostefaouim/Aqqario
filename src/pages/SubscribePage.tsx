@@ -1,10 +1,45 @@
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, Zap, Crown, Building } from "lucide-react";
 
 const SubscribePage = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Abonnements Aqqario",
+    "description": "Plans d'abonnement pour les agences immobilières et professionnels de l'immobilier",
+    "provider": {
+      "@type": "Organization",
+      "name": "Aqqario"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Plan Starter",
+        "price": "29",
+        "priceCurrency": "EUR",
+        "description": "Plan de base pour démarrer votre activité immobilière"
+      },
+      {
+        "@type": "Offer",
+        "name": "Plan Professional", 
+        "price": "79",
+        "priceCurrency": "EUR",
+        "description": "Plan complet pour les professionnels confirmés"
+      },
+      {
+        "@type": "Offer",
+        "name": "Plan Enterprise",
+        "price": "199", 
+        "priceCurrency": "EUR",
+        "description": "Solution complète pour les grandes agences"
+      }
+    ]
+  };
+
   const plans = [
     {
       name: "Starter",
@@ -65,6 +100,13 @@ const SubscribePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead 
+        title="Plans d'Abonnement - Agences Immobilières | Aqqario"
+        description="Choisissez le plan d'abonnement Aqqario adapté à votre agence immobilière. Plans Starter, Professional et Enterprise avec fonctionnalités avancées."
+        keywords="abonnement immobilier, plan agence, tarif professionnel, subscription real estate"
+        canonical="https://aqqario.com/subscribe"
+        structuredData={structuredData}
+      />
       <Navbar />
       
       <div className="pt-16">
