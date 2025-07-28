@@ -24,12 +24,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <Home className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Aqqario
-            </span>
+            <img 
+              src="/logo-compact.svg" 
+              alt="Aqqario Logo" 
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -62,7 +61,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/auth">
+                <Link to="/login">
                   <Button variant="ghost" size="sm">
                     <User className="w-4 h-4 mr-2" />
                     Sign In
@@ -129,7 +128,7 @@ const Navbar = () => {
                   </>
                 ) : (
                   <>
-                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                    <Link to="/login" onClick={() => setIsOpen(false)}>
                       <Button variant="ghost" size="sm" className="w-full justify-start">
                         <User className="w-4 h-4 mr-2" />
                         Sign In
